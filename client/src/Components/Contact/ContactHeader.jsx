@@ -7,7 +7,7 @@ export default function BasicHeader() {
 
     return(
         <>
-        <h1>contact header here</h1>
+        <h3>Email used for Testing contact@beedev-services.com</h3>
         </>
     )
 }

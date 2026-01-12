@@ -3,7 +3,7 @@ import './App.css'
 
 import Index from './Views/Index'
 import NavBar from './Components/NavBar/Nav'
-import BasicContact from './Views/BasicContact'
+import Contact from './Views/Contact'
 
 const App = () => {
 
@@ -13,7 +13,7 @@ const App = () => {
     <NavBar />
     <Routes>
       <Route exact path="/" element={<Index />} />
-      <Route path="/basic-contact" element={<BasicContact />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
     </BrowserRouter>
   )

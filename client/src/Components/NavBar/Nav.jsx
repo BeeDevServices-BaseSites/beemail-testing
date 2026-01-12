@@ -7,7 +7,7 @@ export default function Nav() {
         <>
         <nav>
             <Link to="/">Home</Link>
-            <Link to="/basic-contact">Basic Contact Form</Link>
+            <Link to="/contact">Basic Contact Form</Link>
         </nav>
         </>
     )

@@ -5,11 +5,6 @@ const app = express()
 
 
 require("dotenv").config()
-const allowedOrigins = [
-  `http://localhost:${process.env.FRONTEND_PORT}`,
-  'https://dev.beedev-services.com',
-  'https://beedev-services.com'
-];
 
 app.use(
   cookieParser(),
@@ -17,24 +12,15 @@ app.use(
   express.urlencoded({ extended: true }),
   cors({
     credentials: true,
-    origin: function(origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    }
+    origin: process.env.NODE_ENV === 'development'
+      ? process.env.FRONTEND_DEV_ORIGIN
+      : process.env.FRONTEND_PROD_ORIGIN
   })
 );
-
-// app.use('/', (req, res) => {
-// res.status(201)
-// .json({message: `The server is running on port: ${process.env.PORT}`})
-// })
 
 const mailRoutes = require("./routes/mail.routes")
 app.use('/api', mailRoutes)
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server is Running on port: ${process.env.PORT}`)
+app.listen(process.env.SERVER_PORT, () => {
+    console.log(`Server is Running on port: ${process.env.SERVER_PORT}`)
 })
